@@ -86,9 +86,8 @@ class AzureRMApplicationGatewaysFacts(AzureRMModuleBase):
         self.mgmt_client = self.get_mgmt_svc_client(NetworkManagementClient,
                                                     base_url=self._cloud_environment.endpoints.resource_manager)
 
-        if (self.resource_group is not None and
-                self.application_gateway_name is not None):
-            self.results['application_gateway'] = self.get()
+        if (self.resource_group is not None and self.application_gateway_name is not None):
+            self.results['ansible_facts'] = self.get()
         return self.results
 
     def get(self):
